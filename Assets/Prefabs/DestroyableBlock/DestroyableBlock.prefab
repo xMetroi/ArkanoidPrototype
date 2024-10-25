@@ -152,6 +152,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockHp: 1
+  powerups:
+  - {fileID: 3415727773686466390, guid: 14d6af6bf34d49e4a916ea228c2c57fa, type: 3}
+  - {fileID: 209499785081812480, guid: 310026c351e86e9458f4129257170785, type: 3}
+  - {fileID: 9096326337052943491, guid: ec9c644575e93fa4bb1d6751e920c297, type: 3}
 --- !u!114 &7334330729757222604
 MonoBehaviour:
   m_ObjectHideFlags: 0

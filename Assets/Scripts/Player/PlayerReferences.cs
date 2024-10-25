@@ -7,6 +7,7 @@ public class PlayerReferences : MonoBehaviour
 {
     [Header("Script References")]
     public PlayerMovement playerMovement;
+    public PlayerStats playerStats;
     
     #region Component References
     
