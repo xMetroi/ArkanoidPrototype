@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     
     #region Events
     
-    public event Action OnGameOver;
+    public event Action OnLevelPassed;
     
     #endregion
     
@@ -111,14 +111,21 @@ public class GameManager : MonoBehaviour
         balls.Add(ball);
     }
 
+    /// <summary>
+    /// Method to substract the remaining destroyable blocks count to detect when the game is over
+    /// </summary>
+    /// <param name="amount"> amount to substract </param>
     public void SubstractRemainingBlocks(int amount)
     {
         blocksRemain -= amount;
 
-        if (blocksRemain <= 0)
+        PlayerReferences player = playerReference.GetComponent<PlayerReferences>();
+        
+        //if is zero blocks remain and player is alive
+        if (blocksRemain <= 0 && player.playerStats.GetPlayerHp() > 0)
         {
             Debug.Log("Level passed");
-            OnGameOver?.Invoke();
+            OnLevelPassed?.Invoke();
         }
     }
     
@@ -146,6 +153,42 @@ public class GameManager : MonoBehaviour
     private void ResumeTime()
     {
         Time.timeScale = 1;
+    }
+
+    /// <summary>
+    /// Use this to get the next level
+    /// </summary>
+    /// <param name="actualLevel"> the actual level ( name of the scene ) </param>
+    /// <returns></returns>
+    public string GetNextLevel(string actualLevel)
+    {
+        //Get the actual level number
+        int actualLevelIndex = int.Parse(actualLevel.Split(" ")[1]);
+        
+        //Return the next level ( actual level number plus one )
+        return $"Level {actualLevelIndex + 1}";
+    }
+    
+    /// <summary>
+    /// Check if the given scene is in the build settings
+    /// </summary>
+    /// <param name="sceneName"></param>
+    /// <returns></returns>
+    public bool IsSceneInBuildSettings(string sceneName)
+    {
+        int sceneCount = SceneManager.sceneCountInBuildSettings;
+
+        for (int i = 0; i < sceneCount; i++)
+        {
+            string path = SceneUtility.GetScenePathByBuildIndex(i);
+            string name = System.IO.Path.GetFileNameWithoutExtension(path); // Obtiene solo el nombre de la escena
+
+            if (name == sceneName)
+            {
+                return true; // La escena está en los Build Settings
+            }
+        }
+        return false; // La escena no está en los Build Settings
     }
     
     #endregion

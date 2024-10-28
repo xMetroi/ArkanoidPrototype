@@ -25,6 +25,11 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private Button gameOverRestartLevelButton;
     [SerializeField] private Button gameOverBackToLobbyButton;
     
+    [Header("Level Passed Menu Properties")]
+    [SerializeField] private GameObject levelPassedMenuCanvas;
+    [SerializeField] private Button levelPassedNextLevelButton;
+    [SerializeField] private Button levelPassedBackToLobbyButton;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +39,7 @@ public class PlayerUI : MonoBehaviour
         references.playerStats.OnPlayerDeath += OnPlayerDeath;
         references.playerStats.OnGamePointAdded += OnGamePointAdded;
         references.playerMechanics.OnAddLife += OnAddLife;
+        GameManager.Instance.OnLevelPassed += OnLevelPassed;
         
         Initialize();
     }
@@ -46,6 +52,7 @@ public class PlayerUI : MonoBehaviour
             references.playerStats.OnPlayerDeath -= OnPlayerDeath;
             references.playerStats.OnGamePointAdded -= OnGamePointAdded;
             references.playerMechanics.OnAddLife -= OnAddLife;   
+            GameManager.Instance.OnLevelPassed -= OnLevelPassed;
         }
     }
 
@@ -93,6 +100,12 @@ public class PlayerUI : MonoBehaviour
     {
         playerHpText.text = $"Lifes: {references.playerStats.GetPlayerHp()}";
     }
+
+    private void OnLevelPassed()
+    {
+        ShowLevelPassedMenu();
+        AssignLevelPassedButton();
+    }
     
     #endregion
     
@@ -136,6 +149,30 @@ public class PlayerUI : MonoBehaviour
     {
         GameManager.Instance.PauseResumeGame(!paused);
         gameOverMenuCanvas.SetActive(true);
+    }
+    
+    #endregion
+    
+    #region Level Passed Menu
+
+    private void AssignLevelPassedButton()
+    {
+        string nextLevelSceneName = GameManager.Instance.GetNextLevel(gameObject.scene.name);
+
+        levelPassedBackToLobbyButton.onClick.AddListener(() => GameManager.Instance.LoadScene("MainMenu"));
+        
+        //If the next level is loaded in the build settings
+        if (GameManager.Instance.IsSceneInBuildSettings(nextLevelSceneName))
+        {
+            levelPassedNextLevelButton.interactable = true;
+            levelPassedNextLevelButton.onClick.AddListener(() => GameManager.Instance.LoadScene(nextLevelSceneName));
+        }
+    }
+
+    private void ShowLevelPassedMenu()
+    {
+        GameManager.Instance.PauseResumeGame(!paused);
+        levelPassedMenuCanvas.SetActive(true);
     }
     
     #endregion
