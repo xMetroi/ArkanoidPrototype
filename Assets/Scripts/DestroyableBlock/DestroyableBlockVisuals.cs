@@ -18,7 +18,8 @@ public class DestroyableBlockVisuals : MonoBehaviour
 
     private void OnDestroy()
     {
-        destroyableBlock.OnBlockHit -= OnBlockHitted;
+        if (destroyableBlock != null)
+            destroyableBlock.OnBlockHit -= OnBlockHitted;
     }
 
     private void OnBlockHitted(float damage, float blockHp)

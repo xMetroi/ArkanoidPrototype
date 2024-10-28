@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,15 @@ using UnityEngine;
 public class PlayerMechanics : MonoBehaviour, IPowerup
 {
     private PlayerReferences references;
+    
+    #region Events
+
+    public event Action OnResize;
+    public event Action OnSpeedMultiplier;
+    public event Action OnBallSpeedMultiplier;
+    public event Action OnAddLife;
+    
+    #endregion
     
     void Start()
     {

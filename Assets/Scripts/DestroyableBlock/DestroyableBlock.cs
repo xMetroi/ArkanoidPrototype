@@ -39,6 +39,9 @@ public class DestroyableBlock : MonoBehaviour, IDamageable
         {
             Destroy(gameObject);
             SpawnRandomPowerup(0.5f); // 50% probability of spawn
+            RegisterBlockKill();
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().AddGamePoints(1);
+            
             OnBlockDeath?.Invoke();
         }
     }
@@ -54,6 +57,14 @@ public class DestroyableBlock : MonoBehaviour, IDamageable
         {
             Instantiate(powerups[Random.Range(0, powerups.Length)], transform.position, Quaternion.identity);
         }
+    }
+
+    /// <summary>
+    /// Use this method to register the kill of this block in the game manager
+    /// </summary>
+    private void RegisterBlockKill()
+    {
+        GameManager.Instance.SubstractRemainingBlocks(1);
     }
     
     #endregion

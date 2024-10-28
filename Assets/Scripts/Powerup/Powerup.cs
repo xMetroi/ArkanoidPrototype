@@ -36,7 +36,7 @@ public class Powerup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.left * movementSpeed * Time.deltaTime);
+        transform.Translate(Vector3.down * movementSpeed * Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)
