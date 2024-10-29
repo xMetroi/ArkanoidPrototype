@@ -14,6 +14,12 @@ public class BallMovement : MonoBehaviour
     
     private Rigidbody rb;
     
+    #region Events
+
+    public event Action OnBallImpact;
+    
+    #endregion
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +44,8 @@ public class BallMovement : MonoBehaviour
     private void OnCollisionEnter(Collision coll)
     {
         Vector2 direction;
+        
+        OnBallImpact?.Invoke();
 
         switch (coll.gameObject.tag)
         {

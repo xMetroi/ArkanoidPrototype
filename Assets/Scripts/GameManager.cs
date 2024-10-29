@@ -106,7 +106,9 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         
-        GameObject ball = Instantiate(ballPrefab, position, Quaternion.identity);
+        Transform ballHolder = GameObject.Find("BallsHolder").transform;
+        
+        GameObject ball = Instantiate(ballPrefab, position, Quaternion.identity, ballHolder);
         
         balls.Add(ball);
     }

@@ -37,12 +37,11 @@ public class DestroyableBlock : MonoBehaviour, IDamageable
 
         if (GetBlockHp() <= 0)
         {
+            OnBlockDeath?.Invoke();
             Destroy(gameObject);
             SpawnRandomPowerup(0.5f); // 50% probability of spawn
             RegisterBlockKill();
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().AddGamePoints(1);
-            
-            OnBlockDeath?.Invoke();
         }
     }
     

@@ -13,6 +13,8 @@ public class PlayerMechanics : MonoBehaviour, IPowerup
     public event Action OnSpeedMultiplier;
     public event Action OnBallSpeedMultiplier;
     public event Action OnAddLife;
+
+    public event Action OnBallMultiplier;
     
     #endregion
     
@@ -34,6 +36,8 @@ public class PlayerMechanics : MonoBehaviour, IPowerup
         
         transform.localScale = new Vector3(transform.localScale.x * xMultiplier, transform.localScale.y * yMultiplier, transform.localScale.z);
         
+        OnResize?.Invoke();
+        
         yield return new WaitForSeconds(duration);
         
         transform.localScale = startScale;
@@ -49,6 +53,8 @@ public class PlayerMechanics : MonoBehaviour, IPowerup
         float startSpeed = references.playerMovement.GetMovementSpeed();
         
         references.playerMovement.SetMovementSpeed(startSpeed * speedMultiplier);
+        
+        OnSpeedMultiplier?.Invoke();
         
         yield return new WaitForSeconds(duration);
         
@@ -71,6 +77,8 @@ public class PlayerMechanics : MonoBehaviour, IPowerup
             ballMovement[i].SetMovementSpeed(startSpeed * ballSpeedMultiplier);
         }
         
+        OnBallSpeedMultiplier?.Invoke();
+        
         yield return new WaitForSeconds(duration);
         
         for (int i = 0; i < ballMovement.Length; i++)
@@ -83,7 +91,20 @@ public class PlayerMechanics : MonoBehaviour, IPowerup
     public void AddLifes(float lifesToAdd)
     {
         references.playerStats.SetPlayerHp(references.playerStats.GetPlayerHp() + lifesToAdd);
+        
+        OnAddLife?.Invoke();
     }
-    
+
+    public void BallMultiplier(int ballMultiplier)
+    {
+        for (int i = 0; i < ballMultiplier; i++)
+        {
+            Transform ballPosition = GameObject.FindAnyObjectByType<BallMovement>().transform;
+            GameManager.Instance.SpawnBall(ballPosition.position, 0.2f);
+        }
+        
+        OnBallMultiplier?.Invoke();
+    }
+
     #endregion
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 943897599001536842}
   - component: {fileID: 5383932970313488096}
   - component: {fileID: 6677328075997029845}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,7 +61,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 2ed021a8f89ef364e910dfbbbb917034, type: 2}
+  - {fileID: 2100000, guid: 47ccc556e60c1af4ca71ee3df78fdbec, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -95,7 +96,8 @@ GameObject:
   - component: {fileID: 7687402738962831790}
   - component: {fileID: 7219984415655081939}
   - component: {fileID: 2278045308229468709}
-  m_Layer: 0
+  - component: {fileID: 7898922244112817554}
+  m_Layer: 3
   m_Name: Ball
   m_TagString: Ball
   m_Icon: {fileID: 0}
@@ -131,7 +133,7 @@ SphereCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -181,3 +183,16 @@ MonoBehaviour:
   movementSpeed: 10
   movementDirection: {x: 0, y: -1}
   damage: 1
+--- !u!114 &7898922244112817554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9002124907048024319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 539165b447f5fd840a9588d61d388f36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ballImpactClip: {fileID: 8300000, guid: 0dea186ea06019e40961a3581f2b5752, type: 3}

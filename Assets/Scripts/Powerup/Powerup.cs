@@ -12,6 +12,7 @@ public class Powerup : MonoBehaviour
         BallSpeed,
         PaddleSpeed,
         Life,
+        BallMultiplier,
     }
     
     [Header("Movement Properties")]
@@ -59,6 +60,10 @@ public class Powerup : MonoBehaviour
                 break;
             case PowerupType.Life:
                 powerup.AddLifes(lifeToAdd);
+                break;
+            case PowerupType.BallMultiplier:
+                int ballMultiplier = GameManager.Instance.GetBallsList().Count;
+                powerup.BallMultiplier(ballMultiplier);
                 break;
         }
         

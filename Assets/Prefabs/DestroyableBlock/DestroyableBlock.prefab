@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 3224622913374982108}
   - component: {fileID: 5164980818354068155}
   - component: {fileID: 7334330729757222604}
+  - component: {fileID: 9127050855977007283}
   m_Layer: 0
   m_Name: DestroyableBlock
   m_TagString: DestroyableBlock
@@ -153,10 +154,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockHp: 1
   powerups:
+  - {fileID: 845701393939757908, guid: 029b21b21a5e7514dbe9051d444750a0, type: 3}
   - {fileID: 3415727773686466390, guid: 14d6af6bf34d49e4a916ea228c2c57fa, type: 3}
+  - {fileID: 4761264542558671114, guid: 36b276e36b1c3234fa27f7bcfef82e30, type: 3}
   - {fileID: 209499785081812480, guid: 310026c351e86e9458f4129257170785, type: 3}
   - {fileID: 9096326337052943491, guid: ec9c644575e93fa4bb1d6751e920c297, type: 3}
-  - {fileID: 4761264542558671114, guid: 36b276e36b1c3234fa27f7bcfef82e30, type: 3}
 --- !u!114 &7334330729757222604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,3 +171,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14940bb8da7d3b545892dadcfa3755d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9127050855977007283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4510473156986003107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baaa466d5c1cb094fa3c808cd26d8b94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blockHitClip: {fileID: 8300000, guid: b56f5dad75b1c7d4083e1b891ec6c320, type: 3}
+  blockDeathClip: {fileID: 8300000, guid: f435b679c2bb3254092c429af407a533, type: 3}

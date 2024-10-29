@@ -10,6 +10,7 @@ public class PlayerReferences : MonoBehaviour
     public PlayerStats playerStats;
     public PlayerMechanics playerMechanics;
     public PlayerUI playerUI;
+    public PlayerSounds playerSounds;
     
     #region Component References
     

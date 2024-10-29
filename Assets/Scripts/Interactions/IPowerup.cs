@@ -10,4 +10,6 @@ public interface IPowerup
     void BallSpeedMultiplier(float ballSpeedMultiplier, float duration);
 
     void AddLifes(float lifesToAdd);
+
+    void BallMultiplier(int ballMultiplier);
 }
