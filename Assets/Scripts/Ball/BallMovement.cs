@@ -20,7 +20,6 @@ public class BallMovement : MonoBehaviour
     
     #endregion
     
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -77,6 +76,7 @@ public class BallMovement : MonoBehaviour
                 break;
             
             default:
+                
                 direction = Vector2.Reflect(movementDirection, coll.contacts[0].normal);
         
                 SetMovementDirection(direction.normalized);;

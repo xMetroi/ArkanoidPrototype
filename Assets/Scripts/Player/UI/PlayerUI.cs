@@ -35,12 +35,14 @@ public class PlayerUI : MonoBehaviour
     {
         references = GetComponentInParent<PlayerReferences>();
         
+        //Events subscriptions
         references.playerStats.OnPlayerDamaged += OnPlayerDamaged;
         references.playerStats.OnPlayerDeath += OnPlayerDeath;
         references.playerStats.OnGamePointAdded += OnGamePointAdded;
         references.playerMechanics.OnAddLife += OnAddLife;
         GameManager.Instance.OnLevelPassed += OnLevelPassed;
         
+        //Initialize UI info
         Initialize();
     }
 
@@ -101,6 +103,9 @@ public class PlayerUI : MonoBehaviour
         playerHpText.text = $"Lifes: {references.playerStats.GetPlayerHp()}";
     }
 
+    /// <summary>
+    /// Triggers when level is passed successfully ( all destroyable blocks has been destroyed )
+    /// </summary>
     private void OnLevelPassed()
     {
         ShowLevelPassedMenu();

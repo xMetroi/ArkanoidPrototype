@@ -25,6 +25,12 @@ public class PlayerMechanics : MonoBehaviour, IPowerup
     
     #region Powerups
 
+    /// <summary>
+    /// Resize the player bar
+    /// </summary>
+    /// <param name="xMultiplier"> size multiplier in X </param>
+    /// <param name="yMultiplier"> size multiplier in Y </param>
+    /// <param name="duration"> duration of the powerup </param>
     public void Resize(float xMultiplier, float yMultiplier, float duration)
     {
         StartCoroutine(ResizeCoroutine(xMultiplier, yMultiplier, duration));
@@ -43,6 +49,11 @@ public class PlayerMechanics : MonoBehaviour, IPowerup
         transform.localScale = startScale;
     }
 
+    /// <summary>
+    /// Multiplies the speed of the player
+    /// </summary>
+    /// <param name="speedMultiplier"> value to be multiplied by </param>
+    /// <param name="duration"> duration of the powerup </param>
     public void SpeedMultiplier(float speedMultiplier, float duration)
     {
         StartCoroutine(SpeedMultiplierCoroutine(speedMultiplier, duration));
@@ -61,6 +72,11 @@ public class PlayerMechanics : MonoBehaviour, IPowerup
         references.playerMovement.SetMovementSpeed(startSpeed);
     }
     
+    /// <summary>
+    /// Multiplies the speed of the balls
+    /// </summary>
+    /// <param name="ballSpeedMultiplier"> value to be multiplied by </param>
+    /// <param name="duration"> duration of the powerup </param>
     public void BallSpeedMultiplier(float ballSpeedMultiplier, float duration)
     {
         StartCoroutine(BallSpeedMultiplierCoroutine(ballSpeedMultiplier, duration));
@@ -88,6 +104,10 @@ public class PlayerMechanics : MonoBehaviour, IPowerup
         
     }
     
+    /// <summary>
+    /// Add lifes to the player
+    /// </summary>
+    /// <param name="lifesToAdd"> number of lifes to be added </param>
     public void AddLifes(float lifesToAdd)
     {
         references.playerStats.SetPlayerHp(references.playerStats.GetPlayerHp() + lifesToAdd);
@@ -95,6 +115,10 @@ public class PlayerMechanics : MonoBehaviour, IPowerup
         OnAddLife?.Invoke();
     }
 
+    /// <summary>
+    /// Multiplies the quantity of balls in the level
+    /// </summary>
+    /// <param name="ballMultiplier"> value to be multiplied by </param>
     public void BallMultiplier(int ballMultiplier)
     {
         for (int i = 0; i < ballMultiplier; i++)

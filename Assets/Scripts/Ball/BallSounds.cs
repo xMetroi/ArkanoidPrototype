@@ -26,6 +26,9 @@ public class BallSounds : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Triggers when the ball impact in an object
+    /// </summary>
     private void OnBallImpact()
     {
         SoundManager.Instance.PlaySFXOneShot(ballImpactClip);

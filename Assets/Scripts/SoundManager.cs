@@ -29,6 +29,10 @@ public class SoundManager : MonoBehaviour
 
     #region SFX Source
     
+    /// <summary>
+    /// Reproduce a one shot in the SFX Audio Source
+    /// </summary>
+    /// <param name="clip"> audioclip to be reproduced </param>
     public void PlaySFXOneShot(AudioClip clip)
     {
         sfxSource.PlayOneShot(clip);
@@ -38,23 +42,36 @@ public class SoundManager : MonoBehaviour
     
     #region Music Source
 
+    /// <summary>
+    /// Reproduce a one shot in the Music Audio Source
+    /// </summary>
+    /// <param name="clip"> audioclip to be reproduced </param>
     public void PlayMusicOneShot(AudioClip clip)
     {
         musicSource.PlayOneShot(clip);
     }
 
+    /// <summary>
+    /// Play the lobby music
+    /// </summary>
     public void PlayLobbyMusic()
     {
         musicSource.clip = lobbyMusic;
         musicSource.Play();
     }
 
+    /// <summary>
+    /// Play the game music
+    /// </summary>
     public void PlayGameMusic()
     {
         musicSource.clip = gameMusic;
         musicSource.Play();
     }
 
+    /// <summary>
+    /// Stop the audio clip playing in the Music Audio Source
+    /// </summary>
     public void StopMusic()
     {
         musicSource.Stop();

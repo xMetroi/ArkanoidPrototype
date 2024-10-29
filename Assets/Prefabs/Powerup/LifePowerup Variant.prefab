@@ -24,6 +24,16 @@ PrefabInstance:
       propertyPath: lifeToAdd
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1440613922671307222, guid: ecaee17aa6992da46b03b7f6ff564c2e,
+        type: 3}
+      propertyPath: powerupType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1440613922671307222, guid: ecaee17aa6992da46b03b7f6ff564c2e,
+        type: 3}
+      propertyPath: movementSpeed
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4900922556316055714, guid: ecaee17aa6992da46b03b7f6ff564c2e,
         type: 3}
       propertyPath: m_LocalPosition.x

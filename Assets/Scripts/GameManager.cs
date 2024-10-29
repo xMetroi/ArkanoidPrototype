@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
         
+        //Play the lobby music at the game start
         SoundManager.Instance.PlayLobbyMusic();
     }
 
@@ -66,6 +67,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
+    /// <summary>
+    /// Triggers when a scene is loaded
+    /// </summary>
+    /// <param name="scene"> name of the loaded scene </param>
+    /// <param name="mode"> load scene mode </param>
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (scene.name.Contains("Level")) //The loaded scene is a level
@@ -82,7 +88,7 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 1; //Unpause game
         }
 
-        if (scene.name == "MainMenu")
+        if (scene.name == "MainMenu") //The loaded scene is the main menu
         {
             LevelSelectionManager levelSelection = FindObjectOfType<LevelSelectionManager>();
             
@@ -102,6 +108,11 @@ public class GameManager : MonoBehaviour
        playerReference = Instantiate(playerPrefab, position, Quaternion.identity);
     }
 
+    /// <summary>
+    /// Spawn a ball
+    /// </summary>
+    /// <param name="position"> position where the ball is going to be spawned </param>
+    /// <param name="delay"> delay to spawn the ball </param>
     public void SpawnBall(Vector3 position, float delay)
     {
         StartCoroutine(SpawnBallWithDelay(position, delay));
@@ -190,14 +201,14 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < sceneCount; i++)
         {
             string path = SceneUtility.GetScenePathByBuildIndex(i);
-            string name = System.IO.Path.GetFileNameWithoutExtension(path); // Obtiene solo el nombre de la escena
+            string name = System.IO.Path.GetFileNameWithoutExtension(path); // Gets the scene name
 
             if (name == sceneName)
             {
-                return true; // La escena está en los Build Settings
+                return true; // The scene is in the build settings
             }
         }
-        return false; // La escena no está en los Build Settings
+        return false; // The scene is not in the build settings
     }
     
     #endregion

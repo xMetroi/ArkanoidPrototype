@@ -22,11 +22,20 @@ public class DestroyableBlockVisuals : MonoBehaviour
             destroyableBlock.OnBlockHit -= OnBlockHitted;
     }
 
+    /// <summary>
+    /// Triggers when a destroyable block is impacted
+    /// </summary>
+    /// <param name="damage"> damage received </param>
+    /// <param name="blockHp"> actualHp </param>
     private void OnBlockHitted(float damage, float blockHp)
     {
         ColorManager(blockHp);
     }
 
+    /// <summary>
+    /// Method in charge of changing the color of the block depending on its life.
+    /// </summary>
+    /// <param name="blockHp"> actual hp </param>
     private void ColorManager(float blockHp)
     {
         switch (blockHp)

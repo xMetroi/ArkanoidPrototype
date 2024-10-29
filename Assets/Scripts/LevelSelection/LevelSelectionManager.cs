@@ -14,6 +14,10 @@ public class LevelSelectionManager : MonoBehaviour
         AssignLevelSelectionButtons();
     }
 
+    /// <summary>
+    /// Assign methods to buttons in the level selection canvas
+    /// For the button to work, it must have the name of the scene to be loaded.
+    /// </summary>
     public void AssignLevelSelectionButtons()
     {
         foreach (Button button in levelSelectionButtons)

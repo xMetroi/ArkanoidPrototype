@@ -27,6 +27,10 @@ public class PlayerStats : MonoBehaviour, IDamageable
     
     #endregion
     
+    /// <summary>
+    /// Method to damage player
+    /// </summary>
+    /// <param name="damage"> quantity of damage to be applied </param>
     public void Damage(float damage)
     {
         SetPlayerHp(playerHp - damage);
@@ -36,6 +40,10 @@ public class PlayerStats : MonoBehaviour, IDamageable
             OnPlayerDeath?.Invoke();
     }
 
+    /// <summary>
+    /// Method to add game points to player
+    /// </summary>
+    /// <param name="points"> quantity of points to be added </param>
     public void AddGamePoints(int points)
     {
         gamePoints += points;
