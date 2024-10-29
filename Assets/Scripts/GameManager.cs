@@ -46,6 +46,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
+        
+        SoundManager.Instance.PlayLobbyMusic();
     }
 
     private void OnDisable()
@@ -75,6 +77,8 @@ public class GameManager : MonoBehaviour
             SpawnPlayer(playerPosition);
             SpawnBall(ballSpawnPosition, 2);
             
+            SoundManager.Instance.PlayGameMusic();
+            
             Time.timeScale = 1; //Unpause game
         }
 
@@ -82,7 +86,8 @@ public class GameManager : MonoBehaviour
         {
             LevelSelectionManager levelSelection = FindObjectOfType<LevelSelectionManager>();
             
-            levelSelection.AssignLevelSelectionButtons();
+            if (levelSelection != null)
+                levelSelection.AssignLevelSelectionButtons();
             
             Time.timeScale = 1; //Unpause game
         }
@@ -127,6 +132,8 @@ public class GameManager : MonoBehaviour
         if (blocksRemain <= 0 && player.playerStats.GetPlayerHp() > 0)
         {
             Debug.Log("Level passed");
+            
+            SoundManager.Instance.StopMusic();
             OnLevelPassed?.Invoke();
         }
     }

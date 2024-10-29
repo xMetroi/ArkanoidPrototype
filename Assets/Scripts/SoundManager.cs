@@ -7,6 +7,10 @@ public class SoundManager : MonoBehaviour
     [Header("Audio Sources")]
     [SerializeField] private AudioSource sfxSource;
     [SerializeField] private AudioSource musicSource;
+
+    [Header("Music Clips")]
+    [SerializeField] private AudioClip lobbyMusic;
+    [SerializeField] private AudioClip gameMusic;
     
     public static SoundManager Instance;
     
@@ -37,6 +41,23 @@ public class SoundManager : MonoBehaviour
     public void PlayMusicOneShot(AudioClip clip)
     {
         musicSource.PlayOneShot(clip);
+    }
+
+    public void PlayLobbyMusic()
+    {
+        musicSource.clip = lobbyMusic;
+        musicSource.Play();
+    }
+
+    public void PlayGameMusic()
+    {
+        musicSource.clip = gameMusic;
+        musicSource.Play();
+    }
+
+    public void StopMusic()
+    {
+        musicSource.Stop();
     }
     
     #endregion

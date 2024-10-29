@@ -92,7 +92,7 @@ public class PlayerSounds : MonoBehaviour
 
     private void OnGamePointAdded(float pointsAdded)
     {
-        throw new NotImplementedException();
+        
     }
     
     #endregion

@@ -116,6 +116,7 @@ public class PlayerUI : MonoBehaviour
         pauseButton.onClick.AddListener(() => GameManager.Instance.PauseResumeGame(paused));
         restartLevelButton.onClick.AddListener(() => GameManager.Instance.LoadScene(gameObject.scene.name));
         backToLobbyButton.onClick.AddListener(() => GameManager.Instance.LoadScene("MainMenu"));
+        backToLobbyButton.onClick.AddListener(() => SoundManager.Instance.PlayLobbyMusic());
         closePauseMenuButton.onClick.AddListener(() => GameManager.Instance.PauseResumeGame(paused));
     }
 
@@ -143,6 +144,7 @@ public class PlayerUI : MonoBehaviour
     {
         gameOverRestartLevelButton.onClick.AddListener(() => GameManager.Instance.LoadScene(gameObject.scene.name));
         gameOverBackToLobbyButton.onClick.AddListener(() => GameManager.Instance.LoadScene("MainMenu"));
+        gameOverBackToLobbyButton.onClick.AddListener(() => SoundManager.Instance.PlayLobbyMusic());
     }
     
     private void ShowGameOverMenu()
@@ -160,6 +162,7 @@ public class PlayerUI : MonoBehaviour
         string nextLevelSceneName = GameManager.Instance.GetNextLevel(gameObject.scene.name);
 
         levelPassedBackToLobbyButton.onClick.AddListener(() => GameManager.Instance.LoadScene("MainMenu"));
+        levelPassedBackToLobbyButton.onClick.AddListener(() => SoundManager.Instance.PlayLobbyMusic());
         
         //If the next level is loaded in the build settings
         if (GameManager.Instance.IsSceneInBuildSettings(nextLevelSceneName))
